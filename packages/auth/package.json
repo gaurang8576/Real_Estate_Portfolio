@@ -1,0 +1,27 @@
+{
+  "name": "@test_1/auth",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@better-auth/prisma-adapter": "^1.6.9",
+    "@test_1/db": "workspace:*",
+    "@test_1/env": "workspace:*",
+    "better-auth": "catalog:",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@test_1/config": "workspace:*",
+    "typescript": "^6.0.3"
+  }
+}
