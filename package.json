@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@test_1/config": "workspace:*",
-    "@types/bun": "catalog:",
+    "@types/bun": "^1.0.0",
     "turbo": "^2.9.6",
     "typescript": "^6.0.3",
     "vercel": "^52.0.0"
