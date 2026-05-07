@@ -17,30 +17,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Setup Node
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      # Install pnpm
-      - name: Install pnpm
-        run: npm install -g pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
 
-      # Install dependencies
       - name: Install dependencies
         run: pnpm install
 
-      # Build project
       - name: Build Vite app
-        run: pnpm build
+        run: pnpm --filter web build
 
-      # Upload dist folder
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./apps/web/dist
 
-      # Deploy
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
