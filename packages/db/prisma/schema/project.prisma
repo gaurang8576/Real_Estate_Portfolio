@@ -1,0 +1,40 @@
+model Project {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  tagline     String?
+  description String?  @db.Text
+  location    String
+  latitude    Float?
+  longitude   Float?
+  priceFrom   Decimal  @db.Decimal(12,2)
+  priceTo     Decimal? @db.Decimal(12,2)
+  plotSize    String?
+  status      ProjectStatus @default(ACTIVE)
+  highlights  String[]
+  coverImage  String
+  images      ProjectImage[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("project")
+}
+
+model ProjectImage {
+  id        String  @id @default(cuid())
+  url       String
+  caption   String?
+  sortOrder Int     @default(0)
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+  @@map("project_image")
+}
+
+enum ProjectStatus {
+  ACTIVE
+  SOLD_OUT
+  UPCOMING
+  ARCHIVED
+}

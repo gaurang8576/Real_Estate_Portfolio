@@ -1,0 +1,15 @@
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  role      String?
+  location  String?
+  content   String   @db.Text
+  rating    Int      @default(5)
+  avatarUrl String?
+  isActive  Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("testimonial")
+}
